@@ -1,15 +1,20 @@
 import React from 'react'
+import * as S from './style'
+import { GrCheckbox, GrCheckboxSelected } from 'react-icons/gr'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 
 function TodoItem({ itemData, todoRemoveHandler, todoCheckHandler }) {
   return (
-    <>
-      <p>{itemData.date}</p>
-      <p>{itemData.content}</p>
-      <button onClick={() => todoCheckHandler(itemData.id)}>
-        {itemData.checked ? <p>미완료</p> : <p>완료</p>}
-      </button>
-      <button onClick={() => todoRemoveHandler(itemData.id)}>제거하기</button>
-    </>
+    <S.ItemContainer isChecked={itemData.checked}>
+      <S.ItemButton onClick={() => todoCheckHandler(itemData.id)}>
+        {itemData.checked ? <GrCheckboxSelected /> : <GrCheckbox />}
+      </S.ItemButton>
+      <S.ItemText>{itemData.date}</S.ItemText>
+      <S.ItemText>{itemData.content}</S.ItemText>
+      <S.ItemButton onClick={() => todoRemoveHandler(itemData.id)}>
+        <AiOutlineCloseCircle />
+      </S.ItemButton>
+    </S.ItemContainer>
   )
 }
 

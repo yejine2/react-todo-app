@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import * as S from './style'
 
 function TodoAdd({ todoId, todoData, setTodoData }) {
   const [userInput, setUserInput] = useState({ date: '', content: '' })
@@ -23,11 +24,13 @@ function TodoAdd({ todoId, todoData, setTodoData }) {
   }
 
   return (
-    <div>
-      <input type="date" name="date" onChange={userInputHandler} />
-      <input name="content" onChange={userInputHandler} />
-      <button onClick={() => todoAddHandler(userInput)}>추가하기</button>
-    </div>
+    <S.AddContainer>
+      <S.AddInput type="date" name="date" onChange={userInputHandler} />
+      <S.AddInput name="content" onChange={userInputHandler} />
+      <S.AddButton onClick={() => todoAddHandler(userInput)}>
+        추가하기
+      </S.AddButton>
+    </S.AddContainer>
   )
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import TodoItem from '../TodoItem'
 import TodoAdd from '../TodoAdd'
+import * as S from './style'
 
 function TodoList() {
   const todoId = useRef(2)
@@ -25,7 +26,8 @@ function TodoList() {
   }
 
   return (
-    <div>
+    <S.TodoContainer>
+      <S.TodoTitle>TodoList</S.TodoTitle>
       <TodoAdd todoId={todoId} todoData={todoData} setTodoData={setTodoData} />
       {todoData.map((itemData) => {
         return (
@@ -36,7 +38,7 @@ function TodoList() {
           />
         )
       })}
-    </div>
+    </S.TodoContainer>
   )
 }
 
